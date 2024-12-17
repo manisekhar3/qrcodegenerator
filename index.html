@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            transition: all 0.5s;
+        }
+        .header-buttons{
+            border:  2px solid teal;
+            font-size: 30px;
+            border-radius: 5px;
+            color: teal;
+            margin: 1% 0% 0% 2%;
+            padding: 10px;
+        }
+        .menu-item{
+            box-shadow: 0px 0px 10px 7px black;
+        }
+        .menu-item:hover{
+            transform: scale(1.1);
+        }
+        .header-buttons:hover{
+            color: gray;
+            border: 2px solid grey;
+            box-shadow: 0px 0px 10px 7px teal;
+        }
+        #cart-items {
+            margin-top: 20px;
+        }
+        #cart-items ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #cart-items li {
+            margin: 5px 0;
+        }
+        #cart-items span {
+            font-weight: bold;
+        }
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+        .order-btn{
+            width: 100px;
+            height: 35px;
+            border-radius: 5px;
+            border: 2px solid black;
+            background-image: linear-gradient(75deg,teal,lawngreen);
+            font-size: 16px;
+            font-weight: bold;
+            font-family: cursive;
+            cursor: pointer;
+        }
+        .order-btn:hover
+        {
+            transform: scale(1.2);
+        }
+        #place-order-btn{
+            width: 150px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 2px black;
+            background-image: linear-gradient(45deg,lawngreen,darkgreen);
+            cursor: pointer;
+            font-size: 20px;
+            font-family: fantasy;
+        }
+        #place-order-btn:hover{
+            transform: scale(1.2);
+        }
+        .total-cost {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        /* Hero Section */
+        #home {
+            position: relative;
+            overflow: hidden;
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        .hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero img {
+            width: 100vw; /* Each image takes up 100% of the viewport width */
+            height: 100vh;
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            position: absolute;
+            transform: translateX(100%); /* Start off-screen to the right */
+            animation: slideImage 6s infinite;
+        }
+
+        /* Keyframes for each image's movement */
+        @keyframes slideImage {
+            0% {
+                transform: translateX(100%); /* Start off-screen to the right */
+            }
+            20% {
+                transform: translateX(0); /* Image comes to the center */
+            }
+            40% {
+                transform: translateX(0); /* Image stays in the center for 2 seconds */
+            }
+            60% {
+                transform: translateX(-100%); /* Image moves out to the left */
+            }
+            100% {
+                transform: translateX(-200%); /* Image stays out of the screen on the right side */
+            }
+        }
+
+        /* Apply a delay for each image to create the sequence effect */
+        .hero img:nth-child(1) {
+            animation-delay: 0s; /* Starts immediately */
+        }
+
+        .hero img:nth-child(2) {
+            animation-delay: 2.5s; /* Starts 6 seconds after the first image */
+        }
+
+        .hero img:nth-child(3) {
+            animation-delay: 4.9s; /* Starts 12 seconds after the first image */
+        }
+        .hero img:nth-child(4) {
+            animation-delay: 7.3s; /* Starts 12 seconds after the first image */
+        }
+
+        /* Optional text overlay styling */
+        .hero-text {
+            position: absolute;
+            font-size: 30px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            text-align: center;
+            z-index: 2;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        html {
+    scroll-behavior: smooth;
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a class="header-buttons" href="#home">Home</a></li>
+                <li><a class="header-buttons" href="#menu">Menu</a></li>
+                <li><a class="header-buttons" href="#about">About</a></li>
+                <li><a class="header-buttons" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero">
+            <img src="./imgs/img2.jpg" alt="Image 1"> <!-- Replace with your first image -->
+            <img src="./imgs/img3.webp" alt="Image 2"> <!-- Replace with your second image -->
+            <img src="./imgs/img4.webp" alt="Image 3"> <!-- Replace with your third image -->
+            <img src="./imgs/Restaurant-Interior.jpg" alt="Image 3"> <!-- Replace with your third image -->
+        </div>
+        <div class="hero-text">
+            <h1>Welcome to Delicious Bites</h1>
+            <p>Where taste meets quality!</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="./imgs/coffee.jpg" alt="Pasta">
+                <h3>coffee</h3>
+                <p>A high acidity coffee as lively, tangy, or bright</p>
+                <span>$5.99</span>
+                <button class="order-btn" data-item="coffee" data-price="5.99">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="./imgs/pizza.jpg" alt="Pizza">
+                <h3>Pizza</h3>
+                <p>Delicious pizza..with extra cheese</p>
+                <span>$12.99</span>
+                <button class="order-btn" data-item="Pizza" data-price="12.99">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="./imgs/burger.jpg" alt="Burger">
+                <h3>Burger</h3>
+                <p>Juicy burger with extra toppings.</p>
+                <span>$9.99</span>
+                <button class="order-btn" data-item="Burger" data-price="9.99">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="./imgs/pasta.webp" alt="Pasta">
+                <h3>Pasta</h3>
+                <p>Classic pasta with rich sauce.</p>
+                <span>$11.99</span>
+                <button class="order-btn" data-item="Pasta" data-price="11.99">Order Now</button>
+            </div>
+            <div class="menu-item">
+                <img src="./imgs/chiken.jpg" alt="Pasta">
+                <h3>chiken</h3>
+                <p>Crunchy and crispy Fried chiken</p>
+                <span>$15.69</span>
+                <button class="order-btn" data-item="coffee" data-price="15.69">Order Now</button>
+            </div>
+        </div>
+        <div id="cart-items">
+            <h3>Your Cart</h3>
+            <ul id="cart-list">
+                <!-- Cart items will appear here -->
+            </ul>
+            <div class="total-cost" id="total-cost">Total: $0.00</div>
+            <button id="place-order-btn">Place Order</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Delicious Bites, we believe that food is more than just a meal — it's an experience. Founded with a passion for great taste, we are dedicated to providing our customers with a dining experience that combines quality ingredients, innovative flavors, and exceptional service.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Your message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Delicious Bites. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const cart = [];
+        const cartList = document.getElementById('cart-list');
+        const totalCostElem = document.getElementById('total-cost');
+
+        // Function to update the cart UI and the total cost
+        function updateCartUI() {
+            cartList.innerHTML = ''; // Clear current cart items
+            let total = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.item} - $${item.price.toFixed(2)}`;
+                
+                // Create remove button
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.classList.add('remove-btn');
+                removeBtn.addEventListener('click', () => {
+                    cart.splice(index, 1);  // Remove item from cart
+                    updateCartUI();  // Update the cart UI after removal
+                });
+
+                // Append remove button to the list item
+                li.appendChild(removeBtn);
+                cartList.appendChild(li);
+
+                total += item.price; // Add price to the total
+            });
+
+            totalCostElem.textContent = `Total: $${total.toFixed(2)}`; // Update total cost
+        }
+
+        document.querySelectorAll('.order-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.getAttribute('data-item');
+                const price = parseFloat(button.getAttribute('data-price'));
+                cart.push({ item, price });
+                alert(`${item} added to cart!`);
+                updateCartUI(); // Update cart display
+            });
+        });
+
+        document.getElementById('place-order-btn').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            // Display a message when the order is placed
+            alert('Order Placed! Thank you for your purchase.');
+            cart.length = 0; // Empty the cart
+            updateCartUI(); // Clear the cart display
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for reaching out! We will get back to you soon.');
+        });
+
+
+        // Ensure the page scrolls smoothly when clicking navigation buttons
+document.querySelectorAll('.header-buttons').forEach(button => {
+    button.addEventListener('click', (event) => {
+        // Prevent default link behavior
+        event.preventDefault();
+        
+        // Get the target section by the href of the clicked button
+        const targetId = button.getAttribute('href').substring(1); // Remove the '#' character
+        const targetElement = document.getElementById(targetId);
+        
+        // Scroll to the target section
+        targetElement.scrollIntoView({
+            behavior: 'smooth', // Enable smooth scroll
+            block: 'start' // Align the target at the top of the view
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
+ addEventListener
